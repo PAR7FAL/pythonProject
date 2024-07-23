@@ -4,7 +4,7 @@ pipeline{
     stages {
         stage("get proj") {
             steps {
-                git branch: 'main', url: "https://github.com/PAR7FAL/pythonProject"
+                git "https://github.com/PAR7FAL/pythonProject"
             }
 
         }
@@ -19,7 +19,7 @@ pipeline{
                 docker compose build durka-service
                 docker run -d \
                       --name durka-container \
-                      -p 8000:8242 \
+                      -p 8001:8242 \
                       durka-image
                 """
                 }
