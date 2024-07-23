@@ -1,0 +1,35 @@
+pipeline{
+    agent any
+
+    stages {
+        stage("get proj") {
+            steps {
+                git branch: 'main', url: "https://github.com/saulg00dm4n/FastAPI-Planner_service"
+            }
+
+        }
+
+        stage("start") {
+            steps {
+                script {
+                sh """
+                docker rm -f durka-container
+                docker rmi durka-image
+
+                docker compose build durka-service
+                docker run -d \
+                      --name durka-container \
+                      -p 8000:8242 \
+                      durka-image
+                """
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
