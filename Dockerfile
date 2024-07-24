@@ -11,4 +11,4 @@ COPY . .
 RUN pip install -r requirements.txt
 
 
-CMD ["main.py", "--port", "8242", "--host", "0.0.0.0", "main:app"]
+CMD ["python", "main.py"]
