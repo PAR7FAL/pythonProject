@@ -12,4 +12,4 @@ app.include_router(user.router)
 app.include_router(book.router)
 
 
-# uvicorn.run(app, port=8001)
+uvicorn.run(app, port=8001)
